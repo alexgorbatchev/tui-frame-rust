@@ -1,0 +1,28 @@
+[package]
+name = "tui-frame"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.96"
+license = "MIT"
+description = "Native terminal sessions with independently rendered frame regions"
+
+[dependencies]
+libc = "0.2"
+portable-pty = { version = "0.9.0", path = "vendor/portable-pty" }
+ratatui = { version = "0.30.2", default-features = false, features = ["crossterm"] }
+crossterm = "0.29.0"
+anstyle = "1.0.14"
+anstyle-lossy = "1.1.5"
+termina = "0.4.0"
+thiserror = "2.0"
+signal-hook = "0.4"
+terminfo = "0.9.0"
+
+[target.'cfg(target_os = "linux")'.dependencies]
+rustix = { version = "1.1.5", features = ["fs"] }
+
+[build-dependencies]
+bindgen = "0.73.2"
+
+[lints.rust]
+unsafe_op_in_unsafe_fn = "deny"
